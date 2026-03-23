@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Jogo - Eu, Jesus</title>
+    <style>
+        html { font-size: 70%; }
+        :root { --bg-dark: #0a0a0a; --accent-gold: #c5a059; --text-light: #e0e0e0; --nav-bg: #151515; --manto-jesus: #4760AB; --panel-bg: #111111; }
+        body, html { margin: 0; padding: 0; min-height: 100vh; background-color: var(--bg-dark); color: var(--text-light); font-family: 'Georgia', serif; }
+        nav { width: 100%; background-color: var(--nav-bg); border-bottom: 2px solid var(--accent-gold); padding: 1.5rem 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; position: sticky; top: 0; z-index: 1000; }
+        .nav-link { color: var(--text-light); text-decoration: none; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; padding: 8px 15px; border: 1px solid transparent; transition: all 0.3s; white-space: nowrap; font-weight: bold; }
+        .nav-link:hover, .nav-link.active { color: var(--accent-gold); border: 1px solid var(--accent-gold); border-radius: 4px; }
+        .page-header { text-align: center; padding: 5rem 0 2rem; }
+        h1 { font-family: "Centaur", "Calibri", "Arial", serif; font-size: 5rem; color: var(--accent-gold); letter-spacing: 10px; text-transform: uppercase; margin: 0 0 1rem 0; }
+        .subtitle { font-family: "Centaur", "Calibri", "Arial", serif; font-size: 1.8rem; color: var(--manto-jesus); letter-spacing: 4px; text-transform: uppercase; }
+        .gold-divider { width: 250px; height: 2px; background: var(--accent-gold); margin: 2.5rem auto; }
+        .container { max-width: 900px; width: 90%; margin: 0 auto; padding: 2rem 0 5rem; }
+        .content-panel { background: var(--panel-bg); border: 1px solid #1e1e1e; border-left: 4px solid var(--accent-gold); padding: 3.5rem; margin-bottom: 3rem; border-radius: 0 8px 8px 0; }
+        h2 { font-family: "Centaur", "Calibri", "Arial", serif; color: var(--accent-gold); font-size: 2.6rem; letter-spacing: 5px; text-transform: uppercase; margin-top: 0; margin-bottom: 2rem; }
+        h3 { color: var(--manto-jesus); font-size: 1.8rem; font-weight: normal; font-style: italic; margin-bottom: 1.5rem; }
+        p { font-size: 1.6rem; line-height: 2; margin-bottom: 1.8rem; }
+        blockquote { border-left: 3px solid var(--accent-gold); padding: 1.5rem 2.5rem; margin: 2.5rem 0; font-style: italic; font-size: 1.9rem; color: var(--accent-gold); background: rgba(197,160,89,0.05); }
+        .verse { font-family: "Centaur", "Calibri", "Arial", serif; font-size: 2.2rem; color: var(--accent-gold); text-align: center; letter-spacing: 2px; margin: 3rem 0; padding: 2rem 1rem; border-top: 1px solid #333; border-bottom: 1px solid #333; }
+        .choice-box { display: flex; gap: 2rem; margin: 2rem 0; flex-wrap: wrap; }
+        .choice { flex: 1; min-width: 200px; background: #0d0d0d; border: 1px solid #333; padding: 2rem; border-radius: 6px; }
+        .choice.gold { border-color: var(--accent-gold); }
+        .choice h4 { font-family: "Centaur", "Calibri", "Arial", serif; color: var(--accent-gold); font-size: 1.8rem; letter-spacing: 3px; text-transform: uppercase; margin: 0 0 1rem 0; }
+        .choice p { font-size: 1.4rem; margin: 0; }
+        footer { text-align: center; padding: 2rem; font-size: 1.1rem; color: #444; border-top: 1px solid #1e1e1e; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="nova-proposta.html" class="nav-link">A Nova Proposta</a>
+        <a href="o-atalaia.html" class="nav-link">O Atalaia</a>
+        <a href="o-arauto.html" class="nav-link">O Arauto</a>
+        <a href="o-profeta.html" class="nav-link">O Profeta</a>
+        <a href="fim-dos-tempos.html" class="nav-link">O Fim dos Tempos</a>
+        <a href="nova-arca.html" class="nav-link">A Nova Arca</a>
+        <a href="novo-reino.html" class="nav-link">O Novo Reino</a>
+        <a href="cristao-caviar.html" class="nav-link">O Cristão-Caviar</a>
+        <a href="voce-sera-salvo.html" class="nav-link">Você será salvo?</a>
+        <a href="movietheater.html" class="nav-link">O Livro</a>
+        <a href="o-jogo.html" class="nav-link active">O Jogo</a>
+        <a href="a-aposta.html" class="nav-link">A Aposta</a>
+    </nav>
+
+    <div class="page-header">
+        <h1>O Jogo</h1>
+        <div class="subtitle">A vida como arena de escolhas livres</div>
+        <div class="gold-divider"></div>
+    </div>
+
+    <div class="container">
+
+        <div class="content-panel">
+            <h2>As Regras do Jogo</h2>
+            <p>O universo levou quase catorze bilhões de anos para produzir uma criatura capaz de fazer perguntas. Até hoje, em toda a extensão do cosmos que podemos observar, somente nós — os humanos — sabemos que existimos, sabemos que vamos morrer e sabemos que temos escolhas.</p>
+            <p>Isso é extraordinário. E é também a essência do que chamamos de "O Jogo".</p>
+            <p>O jogo da vida não é aleatório. Tem regras. Não regras impostas de fora por um árbitro que pune os infratores. Regras que emergem da própria natureza da existência consciente: cada ação tem consequências. Cada escolha fecha algumas portas e abre outras. Cada momento de compaixão ou de crueldade deixa uma marca — em você e nos outros.</p>
+            <blockquote>
+                "Aquilo que o homem semear, isso também ceifará."
+            </blockquote>
+        </div>
+
+        <div class="content-panel">
+            <h2>A Grande Bifurcação</h2>
+            <h3>Dois caminhos, uma única vida</h3>
+            <p>Em cada momento significativo da vida, existe uma bifurcação. Não no sentido dramático de um único grande momento decisivo, mas no sentido de uma orientação que se constrói através de milhares de pequenas escolhas cotidianas.</p>
+
+            <div class="choice-box">
+                <div class="choice">
+                    <h4>Caminho I</h4>
+                    <p>O caminho do fechamento: ego, acúmulo, domínio, indiferença, medo. Parece seguro. Mas isola e, a longo prazo, corrói.</p>
+                </div>
+                <div class="choice gold">
+                    <h4>Caminho II</h4>
+                    <p>O caminho da abertura: compaixão, generosidade, serviço, coragem, amor. Parece arriscado. Mas conecta e, a longo prazo, liberta.</p>
+                </div>
+            </div>
+
+            <p>A maioria das pessoas não escolhe conscientemente um desses caminhos. Vai sendo levada por hábitos, pela pressão social, pelo conforto do familiar. O jogo fica interessante quando você para de jogar no piloto automático e começa a jogar de forma consciente.</p>
+            <div class="verse">Entrai pela porta estreita, porque larga é a porta e amplo o caminho que conduz à perdição.</div>
+        </div>
+
+        <div class="content-panel">
+            <h2>O Nível Final</h2>
+            <h3>O que está em jogo de verdade</h3>
+            <p>Todo jogo sério tem um momento em que as apostas ficam claras. No jogo da existência humana, as apostas ficaram claras agora — no início do século XXI, quando a humanidade criou ferramentas capazes de ampliar o seu bem e também o seu mal em uma escala nunca antes imaginada.</p>
+            <p>A inteligência artificial aprende com o que lhe ensinamos. As redes sociais amplificam o que nelas colocamos. O planeta responde ao que nele fazemos. O "nível final" do jogo não é uma batalha épica com dragões. É a batalha cotidiana para ser a melhor versão de si mesmo, repetida por bilhões de pessoas ao mesmo tempo.</p>
+            <p>Se a maioria jogar bem — com honestidade, compaixão e cooperação — o mundo fica melhor. Se a maioria jogar mal — com desonestidade, egoísmo e trapaça — o mundo fica pior. É simples. E é profundo ao mesmo tempo.</p>
+            <blockquote>
+                "O que fizestes ao menor dentre os meus irmãos, a mim o fizestes."
+            </blockquote>
+        </div>
+
+        <div class="content-panel">
+            <h2>Você Está Jogando Agora</h2>
+            <p>Não existe pausa neste jogo. Não existe modo espectador. Você está sempre jogando — através das suas palavras, das suas escolhas de consumo, da forma como trata as pessoas ao seu redor, do que você promove e do que você ignora.</p>
+            <p>A boa notícia: não é preciso ser perfeito. É preciso ser consciente. É preciso estar disposto a aprender com os erros e a começar de novo quando necessário. O jogo resiste ao fracasso. O que não resiste é a recusa em jogar.</p>
+            <div class="verse">Ao que tem, mais lhe será dado. Ao que não tem, até o que tem lhe será tirado.</div>
+        </div>
+
+    </div>
+
+    <footer>&copy; 2026 eujesus.com.br</footer>
+</body>
+</html>
