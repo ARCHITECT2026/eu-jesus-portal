@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Livro - Eu, Jesus</title>
+    <style>
+        html { font-size: 70%; }
+        :root {
+            --bg-color: #0a0a0a;
+            --sidebar-bg: #111;
+            --text-color: #e0e0e0;
+            --accent-gold: #c5a059;
+            --nav-bg: #151515;
+            --footer-height: 10vh;
+            --side-width: 30%; 
+            --center-width: 40%;
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100vh; overflow: hidden;
+            font-family: 'Georgia', serif; background-color: var(--bg-color);
+            color: var(--text-color); display: flex; flex-direction: column;
+        }
+
+        nav {
+            height: 90px; background-color: var(--nav-bg);
+            border-bottom: 2px solid var(--accent-gold);
+            display: flex; align-items: center; padding: 0 20px; z-index: 1100;
+        }
+        .logo-novo-reino { height: 70px; margin-right: 20px; border-radius: 50%; border: 1px solid var(--accent-gold); }
+        .nav-links-container { display: flex; flex: 1; justify-content: center; gap: 8px; }
+        .nav-link { color: var(--text-color); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; font-weight: bold; padding: 5px 10px; }
+
+        .page-header { text-align: center; padding: 1rem 0; background: var(--bg-color); position: relative; z-index: 1050; }
+        .page-header h1 { font-family: "Centaur", serif; font-size: 3rem; color: var(--accent-gold); text-transform: uppercase; margin: 0; letter-spacing: 4px;}
+
+        .app-container { display: flex; flex: 1; overflow: hidden; position: relative; width: 100vw; }
+        
+        .col-left, .col-right { 
+            width: var(--side-width); 
+            background: var(--sidebar-bg); 
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s;
+            z-index: 10;
+        }
+        .col-left { border-right: 1px solid #333; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+        .col-right { border-left: 1px solid #333; }
+
+        .text-scroll-area { flex: 1; overflow-y: auto; padding: 30px; }
+        .lesson-btn-area { padding: 20px; border-top: 1px solid #333; text-align: center; background: var(--sidebar-bg); }
+
+        .col-center { width: var(--center-width); background: #000; position: relative; z-index: 5; display: flex; align-items: center; justify-content: center; }
+
+        .slider-wrapper { display: flex; height: 100%; width: 100%; transition: transform 0.8s ease-in-out; }
+        .slide-unit { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
+
+        /* A IMAGEM - RESTAURADA PARA O ALINHAMENTO MATEMÁTICO QUE FUNCIONA */
+        .media-content { 
+            position: absolute; 
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%; height: 100%; object-fit: cover;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            z-index: 5;
+        }
+
+        .immersive-active .col-left { transform: translateX(-100%); opacity: 0; }
+        .immersive-active .col-right { transform: translateX(100%); opacity: 0; }
+        
+        /* ZOOM IN LARGURA TOTAL SEM PERDER O CENTRO */
+        .media-content.zoomed { 
+            width: 100vw !important; 
+            height: 105vh !important; 
+            z-index: 2000 !important; 
+            opacity: 1 !important; 
+        }
+        
+        .hidden-neighbors { opacity: 0 !important; pointer-events: none; }
+
+        .btn-exit-immersive { 
+            position: fixed; top: 110px; right: 40px; z-index: 3000; 
+            background: rgba(0,0,0,0.85); color: var(--accent-gold); 
+            border: 2px solid var(--accent-gold); padding: 12px 24px; 
+            cursor: pointer; font-weight: bold; display: none; text-transform: uppercase;
+        }
+
+        .btn { background: transparent; border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 10px; cursor: pointer; border-radius: 4px; font-weight: bold; transition: opacity 0.5s; }
+        .btn:disabled { opacity: 0.2; }
+
+        footer { height: var(--footer-height); background: var(--sidebar-bg); border-top: 2px solid var(--accent-gold); display: flex; align-items: center; justify-content: center; z-index: 1100; position: relative; }
+        audio { width: 60%; filter: sepia(0.5); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="images/logo_novo_reino.jpg" class="logo-novo-reino">
+        <div class="nav-links-container">
+            <a href="index.html" class="nav-link">A Nova Proposta</a>
+            <a href="movietheater.html" class="nav-link" style="color:var(--accent-gold)">O Livro</a>
+        </div>
+    </nav>
+
+    <div class="page-header"><h1 id="dynamic-title">EU, JESUS</h1></div>
+
+    <button id="exit-imm-btn" class="btn-exit-immersive" onclick="toggleImmersive()">✖ SAIR DO MODO IMERSIVO</button>
+
+    <div class="app-container">
+        <aside class="col-left">
+            <button id="btn-immersive-toggle" class="btn" onclick="toggleImmersive()">🖥️ MODO IMERSIVO</button>
+            <hr style="width:100%; border: 0.1px solid #333;">
+            <button class="btn" onclick="changePage(-1)">❮ ANTERIOR</button>
+            <button class="btn" onclick="changePage(1)">PRÓXIMA ❯</button>
+            <hr style="width:100%; border: 0.1px solid #333;">
+            <select id="chapter-menu" class="btn" onchange="jumpToPage(this.value)" style="width:100%"></select>
+        </aside>
+
+        <main class="col-center">
+            <div id="lesson-container" style="position:absolute; top:0; left:0; width:100%; height:100%; display:none; background:#000; z-index:2500;">
+                <button class="btn" style="position:absolute; top:20px; right:40px; z-index:2600;" onclick="closeLesson()">FECHAR LIÇÃO ✖</button>
+                <iframe id="lesson-frame" style="width:100%; height:100%; border:none;"></iframe>
+            </div>
+            <div class="slider-wrapper" id="slider-wrapper"></div>
+        </main>
+
+        <article class="col-right">
+            <div class="text-scroll-area"><pre id="text-display-content" style="white-space: pre-wrap; font-family: 'Georgia', serif; font-size: 1.4rem;"></pre></div>
+            <div class="lesson-btn-area" id="lesson-button-container"></div>
+        </article>
+    </div>
+
+    <footer><audio id="main-audio" controls onended="changePage(1)"></audio></footer>
+
+    <script>
+        const pages = [
+            { image: "images/slide1.jpg", audio: "audio/1.mp3", title: "Capítulo 1 - O Verbo", text: "O Verbo se fez carne e habitou entre nós...", lesson: null },
+            { 
+                image: "images/slide5.jpg", 
+                audio: "audio/narration4.mp3", 
+                title: "Capítulo 10 - A Tentação no Deserto", 
+                text: `O deserto estendia-se diante de Mim, vasto e vazio, um lugar onde nenhuma criatura viva parecia prosperar. O vento carregava a poeira da terra, e o sol ardia intensamente sobre as pedras áridas. Seu calor pressionava Meus ombros como um manto de fogo, contudo, as noites eram terrivelmente frias, as estrelas afiadas como lâminas de gelo.
+
+Durante quarenta dias e quarenta noites, jejuei, orando ao Meu Pai e preparando-me para a missão que me aguardava. Cada amanhecer surgia sem consolo, e cada noite caía pesada em silêncio, contudo, eu sentia a proximidade do Céu tão perto quanto a respiração.
+
+O deserto despojou-me de tudo o que era desnecessário. Não havia som algum além do lamento do vento. Nenhum caminho além daquele que o Pai havia traçado para Mim. Nenhuma companhia além das sombras oscilantes nos penhascos e o sussurro incessante do Espírito.
+
+Não havia comida, nem água — apenas a imensidão de areia e pedra. Meu corpo enfraqueceu, meus lábios ressecaram, meus membros ficaram pesados como se esculpidos nas próprias rochas sob meus pés. A fome me corroía como uma fera implacável. A sede queimava minha garganta, até que cada gole parecia fogo.
+
+E, no entanto, meu espírito permaneceu inabalável. Eu não estava sozinho, pois o Pai estava comigo, embora invisível. Sua presença não veio como uma visão, nem como uma voz ao vento, mas como uma profunda certeza, uma força silenciosa que surgiu em meu coração quando meu corpo vacilou. O deserto era uma fornalha, mas cada grão de areia parecia sussurrar: Confie.`, 
+                lesson: "licao10.html", 
+                lessonNum: "10" 
+            }
+        ];
+
+        let currentPage = 0;
+
+        function initSlider() {
+            const wrapper = document.getElementById('slider-wrapper');
+            wrapper.innerHTML = "";
+            pages.forEach((page) => {
+                const div = document.createElement('div');
+                div.className = 'slide-unit';
+                div.innerHTML = `<img src="${page.image}" class="media-content">`;
+                wrapper.appendChild(div);
+            });
+            loadPageData(0);
+        }
+
+        function loadPageData(index) {
+            const page = pages[index];
+            document.getElementById('dynamic-title').innerText = page.title;
+            document.getElementById('slider-wrapper').style.transform = `translateX(-${index * 100}%)`;
+            document.getElementById('text-display-content').textContent = page.text;
+            closeLesson();
+            const btnContainer = document.getElementById('lesson-button-container');
+            btnContainer.innerHTML = page.lesson ? `<button class="btn" style="padding:15px 40px; font-size:1.4rem;" onclick="openLesson('${page.lesson}')">Iniciar Lição ${page.lessonNum}</button>` : "";
+            document.getElementById('main-audio').src = page.audio;
+            document.getElementById('chapter-menu').value = index;
+            currentPage = index;
+        }
+
+        function toggleImmersive() {
+            const body = document.body;
+            const exitBtn = document.getElementById('exit-imm-btn');
+            const images = document.querySelectorAll('.media-content');
+            const target = images[currentPage];
+
+            if (!body.classList.contains('immersive-active')) {
+                // SÓ OPACITY 0 PARA OS VIZINHOS
+                images.forEach((img, i) => { if(i !== currentPage) img.classList.add('hidden-neighbors'); });
+                target.classList.add('zoomed');
+                body.classList.add('immersive-active');
+                exitBtn.style.display = 'block';
+            } else {
+                target.classList.remove('zoomed');
+                body.classList.remove('immersive-active');
+                exitBtn.style.display = 'none';
+                setTimeout(() => {
+                    images.forEach((img) => img.classList.remove('hidden-neighbors'));
+                }, 800);
+            }
+        }
+
+        function openLesson(url) { 
+            document.getElementById('lesson-frame').src = url; 
+            document.getElementById('lesson-container').style.display = 'block'; 
+            document.getElementById('btn-immersive-toggle').disabled = true; 
+            if(document.body.classList.contains('immersive-active')) toggleImmersive(); 
+        }
+
+        function closeLesson() { document.getElementById('lesson-container').style.display = 'none'; document.getElementById('btn-immersive-toggle').disabled = false; }
+        function changePage(step) { let next = currentPage + step; if (next >= 0 && next < pages.length) loadPageData(next); }
+        function jumpToPage(val) { loadPageData(parseInt(val)); }
+
+        window.onload = () => {
+            const menu = document.getElementById('chapter-menu');
+            pages.forEach((p, i) => {
+                let opt = document.createElement('option'); opt.value = i; opt.innerText = p.title; menu.appendChild(opt);
+            });
+            initSlider();
+        };
+    </script>
+</body>
+</html>
