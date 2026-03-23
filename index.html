@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eu, Jesus - Portal</title>
+    <style>
+        /* Escala reduzida para visualização ideal em 100% de zoom */
+        html { font-size: 70%; } 
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --accent-gold: #c5a059;
+            --text-light: #e0e0e0;
+            --nav-bg: #151515;
+            --manto-jesus: #4760AB; /* Azul-Céu aproximado */
+        }
+
+        body, html {
+            margin: 0; padding: 0; min-height: 100vh;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Georgia', serif;
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        /* MENU SUPERIOR */
+        nav {
+            width: 100%;
+            background-color: var(--nav-bg);
+            border-bottom: 2px solid var(--accent-gold);
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; 
+            gap: 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 15px;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            border-radius: 4px;
+        }
+
+        header {
+            width: 100%; padding: 2.5rem 0 1rem;
+            text-align: center;
+        }
+
+        /* Título em Centaur com fallbacks */
+        h1 { 
+            font-family: "Centaur", "Calibri", "Arial", serif;
+            font-size: 5rem; /* Aumentado conforme solicitado */
+            color: var(--accent-gold); 
+            letter-spacing: 10px; 
+            text-transform: uppercase; 
+            margin: 0; 
+        }
+
+        .container { 
+            max-width: 750px; 
+            width: 90%; 
+            margin: 1rem auto; 
+            text-align: center; 
+        }
+
+        /* Ajuste do Player para não expandir além da imagem */
+        .video-box {
+            width: 100%; 
+            max-width: 100%;
+            background: #000;
+            border: 1px solid var(--accent-gold);
+            border-radius: 6px; 
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            margin-bottom: 2.5rem;
+            line-height: 0; /* Remove espaços fantasmas abaixo do vídeo */
+        }
+
+        video { 
+            width: 100%; 
+            height: auto; 
+            max-height: 60vh; /* Garante que o player não ocupe a tela toda verticalmente */
+            display: block; 
+            object-fit: contain; /* Mantém o vídeo dentro das proporções da caixa */
+            cursor: pointer;
+        }
+
+        /* Botão MENSAGEM URGENTE PARA VOCÊ! */
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--manto-jesus); 
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold); /* Letras em dourado */
+            padding: 1.5rem 3.5rem;
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 1.6rem;
+            border-radius: 6px; 
+            transition: all 0.3s;
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .cta-btn:hover { 
+            filter: brightness(1.1);
+            transform: scale(1.05); 
+        }
+
+        footer { margin-top: auto; padding: 1.5rem; font-size: 0.9rem; color: #444; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="nav-link">A Nova Proposta</a>
+        <a href="#" class="nav-link">O Atalaia</a>
+        <a href="#" class="nav-link">O Arauto</a>
+        <a href="#" class="nav-link">O Profeta</a>
+        <a href="#" class="nav-link">O Fim dos Tempos</a>
+        <a href="#" class="nav-link">A Nova Arca</a>
+        <a href="#" class="nav-link">O Novo Reino</a>
+        <a href="#" class="nav-link">O Cristão-Caviar</a>
+        <a href="#" class="nav-link">Você será salvo?</a>
+        <a href="movietheater.html" class="nav-link">O Livro</a>
+        <a href="#" class="nav-link">O Jogo</a>
+        <a href="#" class="nav-link">A Aposta</a>
+    </nav>
+
+    <header>
+        <h1>Eu, Jesus</h1>
+    </header>
+
+    <div class="container">
+        <div class="video-box">
+            <video controls poster="images/welcome.jpg">
+                <source src="welcome.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <a href="movietheater.html" class="cta-btn">Mensagem Urgente para VOCÊ!</a>
+    </div>
+
+    <footer>
+        &copy; 2026 eujesus.com.br
+    </footer>
+
+</body>
+</html>
